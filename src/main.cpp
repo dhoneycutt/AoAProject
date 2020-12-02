@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <cstdlib>
+#include <chrono>
 
 using namespace std;
 
@@ -50,6 +51,8 @@ int main(int argc, char *argv[])
 		}
 	}
 
+	auto start = chrono::high_resolution_clock::now();
+
 	switch(TASK) {
 		case 1: TASK1(m, n, h, p); break;
 		case 2: TASK2(m, n, h, p); break;
@@ -59,7 +62,13 @@ int main(int argc, char *argv[])
 		default: cout << "Argument must be an integer 1-5." << endl;
 	}
 	
-	cout << "Press ENTER to exit";
+	auto stop = chrono::high_resolution_clock::now();
+
+	auto duration = chrono::duration_cast<chrono::microseconds>(stop-start);
+
+	cout << "Time: " << duration.count() << endl;
+
+	cout << "Press ENTER to exit" << endl;
 	cin.get();
 }
 
