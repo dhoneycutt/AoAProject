@@ -111,7 +111,7 @@ void TASK1(int m, int n, int h, vector< vector<int> > p) {
 		}
 	}
 
-	cout << "s = " << s << "x" << s << "; x1 = " << x-s+1 << "; y1 = " << y-s+1 << "; x2 = " << x << "; y2 = " << y << ";" << endl;
+	cout << "s = " << s << "x" << s << "; x1 = " << x-s+1+1 << "; y1 = " << y-s+1+1 << "; x2 = " << x+1 << "; y2 = " << y+1 << ";" << endl;
 
 	//This implementation takes O(mn) extra space due to the mn size memoization matrix mz
 }
@@ -159,7 +159,7 @@ void TASK2(int m, int n, int h, vector< vector<int> > p) {
 		}
 	}
 	
-	cout << "s = " << s << "x" << s << "; x1 = " << x-s+1 << "; y1 = " << y-s+1 << "; x2 = " << x << "; y2 = " << y << ";" << endl;
+	cout << "s = " << s << "x" << s << "; x1 = " << x-s+1+1 << "; y1 = " << y-s+1+1 << "; x2 = " << x+1 << "; y2 = " << y+1 << ";" << endl;
 
 	//This implementation takes O(n) extra space as it only adds two size n arrays (activeRow and prevRow)
 }
