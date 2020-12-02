@@ -248,7 +248,12 @@ void TASK4(int m, int n, int h, vector< vector<int> > p) {
 					left[i][j] = j - prev;
 				}
 				else {
-					left[i][j] = min({left[i-1][j], j-prev});
+					if(p[i-1][j] < h) {
+						left[i][j] = j - prev;
+					}
+					else {
+						left[i][j] = min({left[i-1][j], j-prev});
+					}
 				}
 			}
 		}
@@ -271,7 +276,12 @@ void TASK4(int m, int n, int h, vector< vector<int> > p) {
 					right[i][j] = prev - j;
 				}
 				else {
-					right[i][j] = min({right[i-1][j], prev-j});
+					if(p[i-1][j] < h) {
+						right[i][j] = prev - j;
+					}
+					else {
+						right[i][j] = min({right[i-1][j], prev-j});
+					}
 				}
 			}
 		}
@@ -292,6 +302,7 @@ void TASK4(int m, int n, int h, vector< vector<int> > p) {
 			}
 		}
 	}
+
 	cout << "s = " << s << "; x1 = " << x1 + 1 << "; y1 = " << y1 + 1 << "; x2 = " << x2 + 1 << "; y2 = " << y2 + 1 << ";" << endl;
 
 	//This implementation uses O(mn) extra space due to the three mxn matrices (height, left, and right), with all other variables being of constant size
@@ -346,7 +357,12 @@ void TASK5(int m, int n, int h, vector< vector<int> > p) {
 					currLeft[j] = j - prev;
 				}
 				else {
-					currLeft[j] = min({prevLeft[j], j-prev});
+					if(p[i-1][j] < h) {
+						currLeft[j] = j - prev;
+					}
+					else {
+						currLeft[j] = min({prevLeft[j], j-prev});
+					}
 				}
 			}
 		}
@@ -366,7 +382,13 @@ void TASK5(int m, int n, int h, vector< vector<int> > p) {
 					currRight[j] = prev - j;
 				}
 				else {
-					currRight[j] = min({prevRight[j], prev-j});
+					if(p[i-1][j] < h) {
+						currRight[j] = prev - j;
+					}
+					else {
+						currRight[j] = min({prevRight[j], prev-j});
+					}
+					
 				}
 			}
 		}
@@ -374,7 +396,7 @@ void TASK5(int m, int n, int h, vector< vector<int> > p) {
 		//Check row for new largest sub-matrix
 		int temp = 0;
 		for(int j = 0; j < n; j++) {
-			temp = currHeight[j] * (currLeft[j] + currRight[j] -1);
+			temp = currHeight[j] * (currLeft[j] + currRight[j] - 1);
 			if(temp > s) {
 				s = temp;
 				y1 = j - currLeft[j] + 1;
